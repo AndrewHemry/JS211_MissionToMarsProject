@@ -11,11 +11,45 @@ const jobTypes = {
 
 // Your code will go here
 
+class CrewMember {
+  constructor (name, job, specialSkill, ship = null) {
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = ship
+  }
 
+  enterShip(ship) {
+    this.ship = ship;
+    ship.crew.push(this)
+  }
+}
 
+class Ship {
+  constructor (name, type, ability, crew = []) {
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = crew
+  }
 
+  missionStatement() {
+    if(this.crew.length > 0){
+      return this.ability
+    } else {
+      return "Can't perform a mission yet."
+    }
+  }
+}
 
+      // assert.equal(mav.missionStatement(), "Can't perform a mission yet.");
+      // assert.equal(hermes.missionStatement(), "Can't perform a mission yet.");
 
+      // crewMember1.enterShip(mav);
+      // assert.equal(mav.missionStatement(), "Ascend into low orbit");
+
+      // crewMember2.enterShip(hermes);
+      // assert.equal(hermes.missionStatement(), "Interplanetary Space Travel");
 
 // Begin by reading the tests and building a function that will full each one.
 // As you build, you might not have to build them in order, maybe you do...
